@@ -8,7 +8,7 @@ namespace Netflix.Servo.Monitor
     /// <typeparam name="T"></typeparam>
     public abstract class AbstractMonitor<T> : Monitor<T>
     {
-        protected MonitorConfig config;
+        protected readonly MonitorConfig config;
 
         /// <summary>
         /// Create a new instance with the specified configuration.

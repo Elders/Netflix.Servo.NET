@@ -51,6 +51,7 @@
     <Compile Include="MonitorRegistry.cs" />
     <Compile Include="Monitor\AbstractContextualMonitor.cs" />
     <Compile Include="Monitor\AbstractMonitor.cs" />
+    <Compile Include="Monitor\BasicCompositeMonitor.cs" />
     <Compile Include="Monitor\CompositeMonitor.cs" />
     <Compile Include="Monitor\DefaultPublishingPolicy.cs" />
     <Compile Include="Monitor\Gauge.cs" />

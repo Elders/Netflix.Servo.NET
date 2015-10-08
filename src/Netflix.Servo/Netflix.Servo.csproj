@@ -46,8 +46,10 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Metric.cs" />
     <Compile Include="Monitor\DefaultPublishingPolicy.cs" />
+    <Compile Include="Monitor\Monitor.cs" />
     <Compile Include="Monitor\PublishingPolicy.cs" />
     <Compile Include="Monitor\MonitorConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

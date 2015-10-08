@@ -46,8 +46,10 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Metric.cs" />
     <Compile Include="MonitorRegistry.cs" />
+    <Compile Include="Monitor\AbstractMonitor.cs" />
     <Compile Include="Monitor\DefaultPublishingPolicy.cs" />
     <Compile Include="Monitor\Monitor.cs" />
     <Compile Include="Monitor\PublishingPolicy.cs" />
@@ -68,7 +70,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Jmx\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Java.Util.Concurrent\Java.Util.Concurrent.csproj">
       <Project>{928064f4-1233-44fd-8f8e-dc3bb4af536e}</Project>

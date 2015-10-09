@@ -88,6 +88,7 @@
     <Compile Include="Tag\TaggingContext.cs" />
     <Compile Include="Tag\TagList.cs" />
     <Compile Include="Tag\Tags.cs" />
+    <Compile Include="Util\Clock.cs" />
     <Compile Include="Util\NumberExtensions.cs" />
     <Compile Include="Util\Preconditions.cs" />
   </ItemGroup>

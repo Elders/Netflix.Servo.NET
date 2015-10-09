@@ -82,6 +82,7 @@
     <Compile Include="Publish\MetricObserver.cs" />
     <Compile Include="Publish\MetricTransformObserver.cs" />
     <Compile Include="Publish\PollCallable.cs" />
+    <Compile Include="Publish\PollRunnable.cs" />
     <Compile Include="Stats\StatsConfig.cs" />
     <Compile Include="Stats\StatsBuffer.cs" />
     <Compile Include="Tag\BasicTag.cs" />

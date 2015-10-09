@@ -26,12 +26,20 @@ namespace Netflix.Servo.Monitor
 
         public long getDuration(TimeSpan timeUnit)
         {
-            return timeUnit.Ticks;
+            return timeUnit.TotalNanoseconds();
         }
 
         public long getDuration()
         {
-            return sw.ElapsedTicks;
+            return sw.Elapsed.TotalNanoseconds();
+        }
+    }
+
+    public static class TimeSpanExtensions
+    {
+        public static long TotalNanoseconds(this TimeSpan timespan)
+        {
+            return 1000000L * (long)timespan.TotalMilliseconds;
         }
     }
 }

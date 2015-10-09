@@ -75,6 +75,7 @@
     <Compile Include="Publish\BaseMetricPoller.cs" />
     <Compile Include="Publish\CompositeMetricPoller.cs" />
     <Compile Include="Publish\CounterToRateMetricTransform.cs" />
+    <Compile Include="Publish\FileMetricObserver.cs" />
     <Compile Include="Publish\MetricFilter.cs" />
     <Compile Include="Publish\MetricPoller.cs" />
     <Compile Include="Publish\MetricObserver.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Tag\TagList.cs" />
     <Compile Include="Tag\Tags.cs" />
     <Compile Include="Util\Clock.cs" />
+    <Compile Include="Util\ClockWithOffset.cs" />
     <Compile Include="Util\NumberExtensions.cs" />
     <Compile Include="Util\Preconditions.cs" />
   </ItemGroup>

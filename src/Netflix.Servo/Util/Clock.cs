@@ -11,7 +11,7 @@
          * the epoch using the system clock.
          */
         //Clock WALL() = System::currentTimeMillis;
-        Clock WALL();
+        long WALL();
 
         /**
          * Returns the number of milliseconds since the epoch.

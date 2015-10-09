@@ -58,10 +58,12 @@
     <Compile Include="Monitor\BasicCompositeMonitor.cs" />
     <Compile Include="Monitor\BasicCounter.cs" />
     <Compile Include="Monitor\BasicGauge.cs" />
+    <Compile Include="Monitor\BasicInformational.cs" />
     <Compile Include="Monitor\CompositeMonitor.cs" />
     <Compile Include="Monitor\Counter.cs" />
     <Compile Include="Monitor\DefaultPublishingPolicy.cs" />
     <Compile Include="Monitor\Gauge.cs" />
+    <Compile Include="Monitor\Informational.cs" />
     <Compile Include="Monitor\Monitor.cs" />
     <Compile Include="Monitor\NumericMonitor.cs" />
     <Compile Include="Monitor\PublishingPolicy.cs" />

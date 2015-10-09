@@ -59,6 +59,7 @@
     <Compile Include="Monitor\BasicCounter.cs" />
     <Compile Include="Monitor\BasicGauge.cs" />
     <Compile Include="Monitor\BasicInformational.cs" />
+    <Compile Include="Monitor\BasicStopwatch.cs" />
     <Compile Include="Monitor\CompositeMonitor.cs" />
     <Compile Include="Monitor\Counter.cs" />
     <Compile Include="Monitor\DefaultPublishingPolicy.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Monitor\NumericMonitor.cs" />
     <Compile Include="Monitor\PublishingPolicy.cs" />
     <Compile Include="Monitor\MonitorConfig.cs" />
+    <Compile Include="Monitor\Stopwatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publish\BaseMetricObserver.cs" />
     <Compile Include="Publish\BaseMetricPoller.cs" />

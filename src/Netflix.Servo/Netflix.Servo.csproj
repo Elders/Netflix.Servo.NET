@@ -57,6 +57,7 @@
     <Compile Include="Monitor\AbstractMonitor.cs" />
     <Compile Include="Monitor\BasicCompositeMonitor.cs" />
     <Compile Include="Monitor\BasicCounter.cs" />
+    <Compile Include="Monitor\Class1.cs" />
     <Compile Include="Monitor\CompositeMonitor.cs" />
     <Compile Include="Monitor\Counter.cs" />
     <Compile Include="Monitor\DefaultPublishingPolicy.cs" />

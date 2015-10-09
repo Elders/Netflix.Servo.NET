@@ -76,6 +76,7 @@
     <Compile Include="Publish\CompositeMetricPoller.cs" />
     <Compile Include="Publish\CounterToRateMetricTransform.cs" />
     <Compile Include="Publish\FileMetricObserver.cs" />
+    <Compile Include="Publish\MemoryMetricObserver.cs" />
     <Compile Include="Publish\MetricFilter.cs" />
     <Compile Include="Publish\MetricPoller.cs" />
     <Compile Include="Publish\MetricObserver.cs" />

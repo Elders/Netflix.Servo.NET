@@ -25,13 +25,13 @@ namespace Netflix.Servo.Attributes
          * Type of value that is annotated, for more information see
          * {@link DataSourceType}.
          */
-        public DataSourceType type { get; set; } = DataSourceType.INFORMATIONAL;
+        public DataSourceTypeEnum type { get; set; } = DataSourceTypeEnum.INFORMATIONAL;
 
         /**
          * Level of the value that is annotated, for more information see
          * {@link DataSourceLevel}.
          */
-        public DataSourceLevel level { get; set; } = DataSourceLevel.INFO;
+        public DataSourceLevelEnum level { get; set; } = DataSourceLevelEnum.INFO;
 
         /**
          * A human readable description of the annotated attribute.

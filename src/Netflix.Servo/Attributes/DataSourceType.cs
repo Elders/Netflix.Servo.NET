@@ -3,7 +3,7 @@ using Netflix.Servo.Tag;
 
 namespace Netflix.Servo.Attributes
 {
-    public enum DataSourceType
+    public enum DataSourceTypeEnum
     {
         GAUGE,
         COUNTER,
@@ -16,9 +16,9 @@ namespace Netflix.Servo.Attributes
  * Indicates the type of value that is annotated to determine how it will be
  * measured.
  */
-    public class DataSourceTypeTag : ITag
+    public class DataSourceType : ITag
     {
-        private DataSourceTypeTag(string name)
+        private DataSourceType(string name)
         {
             this.name = name;
         }
@@ -28,7 +28,7 @@ namespace Netflix.Servo.Attributes
          * Examples of metrics that should be gauges are things like current
          * temperature, number of open connections, disk usage, etc.
          */
-        public static DataSourceTypeTag GAUGE = new DataSourceTypeTag(nameof(DataSourceType.GAUGE));
+        public static DataSourceType GAUGE = new DataSourceType(nameof(DataSourceTypeEnum.GAUGE));
 
         /**
          * A counter is for numeric values that get incremented when some event
@@ -36,25 +36,25 @@ namespace Netflix.Servo.Attributes
          * per second. Counter values should be monotonically increasing, i.e.,
          * the value should not decrease.
          */
-        public static DataSourceTypeTag COUNTER = new DataSourceTypeTag(nameof(DataSourceType.COUNTER));
+        public static DataSourceType COUNTER = new DataSourceType(nameof(DataSourceTypeEnum.COUNTER));
 
         /**
          * A rate is for numeric values that represent a rate per second.
          */
-        public static DataSourceTypeTag RATE = new DataSourceTypeTag(nameof(DataSourceType.RATE));
+        public static DataSourceType RATE = new DataSourceType(nameof(DataSourceTypeEnum.RATE));
 
         /**
          * A normalized rate per second. For counters that report values based on step
          * boundaries.
          */
-        public static DataSourceTypeTag NORMALIZED = new DataSourceTypeTag(nameof(DataSourceType.NORMALIZED));
+        public static DataSourceType NORMALIZED = new DataSourceType(nameof(DataSourceTypeEnum.NORMALIZED));
 
         /**
          * An informational attribute is for values that might be useful for
          * debugging, but will not be collected as metrics for monitoring purposes.
          * These values are made available in JMX.
          */
-        public static DataSourceTypeTag INFORMATIONAL = new DataSourceTypeTag(nameof(DataSourceType.INFORMATIONAL));
+        public static DataSourceType INFORMATIONAL = new DataSourceType(nameof(DataSourceTypeEnum.INFORMATIONAL));
 
         /**
          * Key name used for the data source type tag, configurable via

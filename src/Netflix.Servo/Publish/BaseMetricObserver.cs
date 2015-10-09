@@ -17,13 +17,13 @@ namespace Netflix.Servo.Publish
         /**
          * Total number of times update has been called.
          */
-        [Monitor(name = "updateCount", type = DataSourceType.COUNTER)]
+        [Monitor(name = "updateCount", type = DataSourceTypeEnum.COUNTER)]
         private AtomicInteger updateCount = new AtomicInteger(0);
 
         /**
          * Number of times update failed with an exception.
          */
-        [Monitor(name = "updateFailureCount", type = DataSourceType.COUNTER)]
+        [Monitor(name = "updateFailureCount", type = DataSourceTypeEnum.COUNTER)]
         private AtomicInteger failedUpdateCount = new AtomicInteger(0);
 
         /**

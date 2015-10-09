@@ -3,7 +3,7 @@ using Netflix.Servo.Tag;
 
 namespace Netflix.Servo.Attributes
 {
-    public enum DataSourceLevel
+    public enum DataSourceLevelEnum
     {
         DEBUG,
         INFO,
@@ -14,9 +14,9 @@ namespace Netflix.Servo.Attributes
  * Indicates a level for the monitor. This is meant to be similar to log levels to provide a
  * quick way to perform high-level filtering.
  */
-    public class DataSourceLevelTag : ITag
+    public class DataSourceLevel : ITag
     {
-        private DataSourceLevelTag(string name)
+        private DataSourceLevel(string name)
         {
             this.name = name;
         }
@@ -24,17 +24,17 @@ namespace Netflix.Servo.Attributes
         /**
          * Fine granularity monitors that provide a high amount of detail.
          */
-        public static DataSourceLevelTag DEBUG = new DataSourceLevelTag(nameof(DataSourceLevel.DEBUG));
+        public static DataSourceLevel DEBUG = new DataSourceLevel(nameof(DataSourceLevelEnum.DEBUG));
 
         /**
          * The default level for monitors.
          */
-        public static DataSourceLevelTag INFO = new DataSourceLevelTag(nameof(DataSourceLevel.INFO));
+        public static DataSourceLevel INFO = new DataSourceLevel(nameof(DataSourceLevelEnum.INFO));
 
         /**
          * Most important monitors for an application.
          */
-        public static DataSourceLevelTag CRITICAL = new DataSourceLevelTag(nameof(DataSourceLevel.CRITICAL));
+        public static DataSourceLevel CRITICAL = new DataSourceLevel(nameof(DataSourceLevelEnum.CRITICAL));
 
         /**
          * Key name used for the data source level tag.

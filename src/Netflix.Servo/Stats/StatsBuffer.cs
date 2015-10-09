@@ -66,7 +66,7 @@ namespace Netflix.Servo.Stats
          */
         public void reset()
         {
-            statsComputed.CompareAndSet(true, false);
+            statsComputed.GetAndSet(false);
             count = 0;
             total = 0L;
             mean = 0.0;

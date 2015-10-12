@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Servo", "Netflix.Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Java.Util.Concurrent", "Java.Util.Concurrent\Java.Util.Concurrent.csproj", "{928064F4-1233-44FD-8F8E-DC3BB4AF536E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Servo.Atlas", "Netflix.Servo.Atlas\Netflix.Servo.Atlas.csproj", "{7296D06B-608E-42C8-B9FD-25DA2BC60611}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{928064F4-1233-44FD-8F8E-DC3BB4AF536E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{928064F4-1233-44FD-8F8E-DC3BB4AF536E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{928064F4-1233-44FD-8F8E-DC3BB4AF536E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7296D06B-608E-42C8-B9FD-25DA2BC60611}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7296D06B-608E-42C8-B9FD-25DA2BC60611}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7296D06B-608E-42C8-B9FD-25DA2BC60611}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7296D06B-608E-42C8-B9FD-25DA2BC60611}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

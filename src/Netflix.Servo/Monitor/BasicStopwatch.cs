@@ -9,27 +9,27 @@ namespace Netflix.Servo.Monitor
     {
         System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
 
-        public void start()
+        public virtual void start()
         {
             sw.Start();
         }
 
-        public void stop()
+        public virtual void stop()
         {
             sw.Stop();
         }
 
-        public void reset()
+        public virtual void reset()
         {
             sw.Reset();
         }
 
-        public long getDuration(TimeSpan timeUnit)
+        public virtual long getDuration(TimeSpan timeUnit)
         {
             return timeUnit.TotalNanoseconds();
         }
 
-        public long getDuration()
+        public virtual long getDuration()
         {
             return sw.Elapsed.TotalNanoseconds();
         }

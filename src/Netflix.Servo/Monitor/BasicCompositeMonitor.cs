@@ -8,9 +8,9 @@ namespace Netflix.Servo.Monitor
  * Simple composite monitor type with a static list of sub-monitors. The value for the composite
  * is the number of sub-monitors.
  */
-    public class BasicCompositeMonitor : AbstractMonitor<int>, CompositeMonitor<int>
+    public class BasicCompositeMonitor : AbstractMonitor<int>, ICompositeMonitor
     {
-        private readonly List<Monitor<int>> monitors;
+        private readonly List<IMonitor> monitors;
 
         /**
          * Create a new composite.
@@ -19,19 +19,19 @@ namespace Netflix.Servo.Monitor
          *                 shares common tags with the sub-monitors, but it is not enforced.
          * @param monitors list of sub-monitors
          */
-        public BasicCompositeMonitor(MonitorConfig config, List<Monitor<int>> monitors)
+        public BasicCompositeMonitor(MonitorConfig config, List<IMonitor> monitors)
             : base(config)
         {
-            this.monitors = new List<Monitor<int>>(monitors);
+            this.monitors = new List<IMonitor>(monitors);
         }
 
-        public override int getValue(int pollerIndex)
+        public override int GetValue(int pollerIndex)
         {
             return monitors.Count();
         }
 
 
-        public List<Monitor<int>> getMonitors()
+        public List<IMonitor> getMonitors()
         {
             return monitors;
         }

@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 namespace Netflix.Servo.Tag
 {
-    /**
- * Helper functions for working with tags and tag lists.
- */
     public class Tags
     {
         /**
@@ -44,7 +41,7 @@ namespace Netflix.Servo.Tag
          */
         static ITag internCustom(ITag t)
         {
-            return (t is BasicTag) ? t : newTag(t.getKey(), t.getValue());
+            return (t is BasicTag) ? t : newTag(t.Key, t.Value);
         }
 
         /**

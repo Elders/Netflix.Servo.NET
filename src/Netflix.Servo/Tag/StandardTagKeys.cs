@@ -3,8 +3,8 @@
 namespace Netflix.Servo.Tag
 {
     /**
- * Standard tag keys that are used within this library.
- */
+  * Standard tag keys that are used within this library.
+  */
     public class StandardTagKeys
     {
         /**

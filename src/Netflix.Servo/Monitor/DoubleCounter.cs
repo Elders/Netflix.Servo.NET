@@ -55,7 +55,7 @@ namespace Netflix.Servo.Monitor
             }
         }
 
-        public override double getValue(int pollerIndex)
+        public override double GetValue(int pollerIndex)
         {
             Datapoint dp = count.poll(pollerIndex);
             double stepSeconds = Pollers.POLLING_INTERVALS[pollerIndex] / 1000.0;
@@ -90,12 +90,12 @@ namespace Netflix.Servo.Monitor
                 return false;
             }
             DoubleCounter that = (DoubleCounter)o;
-            return config.Equals(that.config) && getValue(0).Equals(that.getValue(0));
+            return config.Equals(that.config) && GetValue(0).Equals(that.GetValue(0));
         }
 
         public override int GetHashCode()
         {
-            return 11 ^ config.GetHashCode() ^ getValue(0).GetHashCode();
+            return 11 ^ config.GetHashCode() ^ GetValue(0).GetHashCode();
         }
     }
 }

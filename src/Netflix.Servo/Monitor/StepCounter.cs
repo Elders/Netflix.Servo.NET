@@ -8,7 +8,7 @@ namespace Netflix.Servo.Monitor
  * A simple counter implementation backed by a StepLong. The value returned is a rate for the
  * previous interval as defined by the step.
  */
-    public class StepCounter : AbstractMonitor<object>, Counter
+    public class StepCounter : AbstractMonitor<object>, ICounter<object>
     {
 
         private StepLong count;
@@ -50,7 +50,7 @@ namespace Netflix.Servo.Monitor
             }
         }
 
-        public override object getValue(int pollerIndex)
+        public override object GetValue(int pollerIndex)
         {
             Datapoint dp = count.poll(pollerIndex);
             double stepSeconds = Pollers.POLLING_INTERVALS[pollerIndex] / 1000.0;

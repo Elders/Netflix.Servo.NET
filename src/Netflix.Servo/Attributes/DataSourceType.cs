@@ -65,19 +65,13 @@ namespace Netflix.Servo.Attributes
         public static String KEY = "";
         public string name = "default";
 
-        public String getKey()
-        {
-            return KEY;
-        }
+        public string Key { get { return KEY; } }
 
-        public String getValue()
-        {
-            return name;
-        }
+        public string Value { get { return name; } }
 
         public String tagString()
         {
-            return getKey() + "=" + getValue();
+            return Key + "=" + Value;
         }
     }
 }

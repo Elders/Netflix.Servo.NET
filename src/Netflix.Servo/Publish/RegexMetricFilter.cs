@@ -42,7 +42,7 @@ namespace Netflix.Servo.Publish
         public bool matches(MonitorConfig config)
         {
             String name = config.getName();
-            TagList tags = config.getTags();
+            ITagList tags = config.getTags();
             String value;
             if (tagKey == null)
             {

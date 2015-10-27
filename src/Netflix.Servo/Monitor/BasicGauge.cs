@@ -7,7 +7,7 @@ namespace Netflix.Servo.Monitor
     /**
  * A gauge implementation that invokes a specified callable to get the current value.
  */
-    public class BasicGauge<T> : AbstractMonitor<T>, Gauge<T>
+    public class BasicGauge<T> : AbstractMonitor<T>, IGauge<T>
     {
         private Callable<T> function;
 
@@ -23,7 +23,7 @@ namespace Netflix.Servo.Monitor
             this.function = function;
         }
 
-        public override T getValue(int pollerIndex)
+        public override T GetValue(int pollerIndex)
         {
             return function.Call();
         }

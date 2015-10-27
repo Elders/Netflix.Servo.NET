@@ -10,6 +10,6 @@
         /**
          * Returns the tags for the current execution context.
          */
-        TagList getTags();
+        ITagList getTags();
     }
 }

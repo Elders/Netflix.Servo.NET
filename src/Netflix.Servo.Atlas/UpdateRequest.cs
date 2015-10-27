@@ -11,7 +11,7 @@ namespace Netflix.Servo.Atlas
     public class UpdateRequest : JsonPayload
     {
 
-        private TagList tags;
+        private ITagList tags;
         private List<AtlasMetric> metrics;
 
         /**
@@ -22,7 +22,7 @@ namespace Netflix.Servo.Atlas
          * @param numMetrics    How many metrics in the array metricsToSend should be sent. Note
          *                      that this value needs to be lower or equal to metricsToSend.length
          */
-        public UpdateRequest(TagList tags, Metric[] metricsToSend, int numMetrics)
+        public UpdateRequest(ITagList tags, Metric[] metricsToSend, int numMetrics)
         {
             Preconditions.checkArgument(metricsToSend.Length > 0, "metricsToSend is empty");
             Preconditions.checkArgument(numMetrics > 0 && numMetrics <= metricsToSend.Length,
@@ -41,7 +41,7 @@ namespace Netflix.Servo.Atlas
             this.tags = tags;
         }
 
-        TagList getTags()
+        ITagList getTags()
         {
             return tags;
         }

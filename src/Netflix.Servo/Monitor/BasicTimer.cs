@@ -40,7 +40,7 @@
 //                this.factor = factor;
 //            }
 
-//            public override Double getValue(int pollerIndex)
+//            public override double getValue(int pollerIndex)
 //            {
 //                return wrapped.getValue(pollerIndex) * factor;
 //            }

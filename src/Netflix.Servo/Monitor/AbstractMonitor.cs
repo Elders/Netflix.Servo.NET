@@ -1,22 +1,15 @@
-﻿using Netflix.Servo.Util;
-
-namespace Netflix.Servo.Monitor
+﻿namespace Netflix.Servo.Monitor
 {
-    /// <summary>
-    ///  Base type to simplify implementing monitors.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public abstract class AbstractMonitor<T> : Monitor<T>
+    public abstract class AbstractMonitor<T> : IMonitor<T>
     {
-        protected readonly MonitorConfig config;
+        protected MonitorConfig config;
 
-        /// <summary>
-        /// Create a new instance with the specified configuration.
-        /// </summary>
-        /// <param name="config"></param>
+        /**
+         * Create a new instance with the specified configuration.
+         */
         protected AbstractMonitor(MonitorConfig config)
         {
-            this.config = Preconditions.checkNotNull(config, "config");
+            this.config = config;
         }
 
         public MonitorConfig getConfig()
@@ -24,11 +17,21 @@ namespace Netflix.Servo.Monitor
             return config;
         }
 
-        public T getValue()
+        public virtual T GetValue()
         {
-            return getValue(0);
+            return GetValue(0);
         }
 
-        public abstract T getValue(int pollerIndex);
+        public abstract T GetValue(int pollerIndex);
+
+        object IMonitor.GetValue()
+        {
+            return GetValue();
+        }
+
+        object IMonitor.GetValue(int pollerIndex)
+        {
+            return GetValue(pollerIndex);
+        }
     }
 }

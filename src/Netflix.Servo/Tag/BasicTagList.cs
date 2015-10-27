@@ -2,19 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Netflix.Servo.Util;
 
 namespace Netflix.Servo.Tag
 {
+
     /**
  * Immutable tag list.
  */
-    public class BasicTagList : TagList
+    public class BasicTagList : ITagList
     {
         /**
          * An empty tag list.
          */
-        public static TagList EMPTY = new BasicTagList(Enumerable.Empty<ITag>());
+        public static ITagList EMPTY = new BasicTagList(Enumerable.Empty<ITag>());
 
         private SmallTagMap tagMap;
         private SortedDictionary<String, String> sortedTaglist;
@@ -48,7 +48,7 @@ namespace Netflix.Servo.Tag
         public String getValue(String key)
         {
             ITag t = tagMap.get(key);
-            return (t == null) ? null : t.getValue();
+            return (t == null) ? null : t.Value;
         }
 
         public bool containsKey(String key)
@@ -89,7 +89,7 @@ namespace Netflix.Servo.Tag
             SortedDictionary<String, String> tm = new SortedDictionary<String, String>();
             foreach (var tag in this.tagMap)
             {
-                tm.Add(tag.getKey(), tag.getValue());
+                tm.Add(tag.Key, tag.Value);
             }
 
             sortedTaglist = new SortedDictionary<string, string>(tm);
@@ -100,7 +100,7 @@ namespace Netflix.Servo.Tag
          * Returns a new tag list with additional tags from {@code tags}. If there
          * is a conflict with tag keys the tag from {@code tags} will be used.
          */
-        public BasicTagList copy(TagList tags)
+        public BasicTagList copy(ITagList tags)
         {
             return concat(this, tags);
         }
@@ -136,7 +136,7 @@ namespace Netflix.Servo.Tag
          * If there is a conflict with tag keys, the tag from {@code t2} will be
          * used.
          */
-        public static BasicTagList concat(TagList t1, TagList t2)
+        public static BasicTagList concat(ITagList t1, ITagList t2)
         {
             return new BasicTagList(t1.Concat(t2));
         }
@@ -146,7 +146,7 @@ namespace Netflix.Servo.Tag
          * If there is a conflict with tag keys, the tag from {@code t2} will be
          * used.
          */
-        public static BasicTagList concat(TagList t1, params ITag[] t2)
+        public static BasicTagList concat(ITagList t1, params ITag[] t2)
         {
             return new BasicTagList(t1.Concat(t2));
         }
@@ -160,9 +160,9 @@ namespace Netflix.Servo.Tag
          * BasicTagList tagList = BasicTagList.of("id", "someId", "class", "someClass");
          * </code>
          */
-        public static BasicTagList of(params String[] tags)
+        public static BasicTagList of(params string[] tags)
         {
-            Preconditions.checkArgument(tags.Length % 2 == 0, "tags must be a sequence of key,value pairs");
+            //Preconditions.checkArgument(tags.Length % 2 == 0, "tags must be a sequence of key,value pairs");
 
             SmallTagMap.Builder builder = SmallTagMap.builder();
             for (int i = 0; i < tags.Length; i += 2)
@@ -230,6 +230,11 @@ namespace Netflix.Servo.Tag
             }
 
             return new BasicTagList(builder.result());
+        }
+
+        public IDictionary<string, string> AsDictionary()
+        {
+            throw new NotImplementedException();
         }
     }
 }

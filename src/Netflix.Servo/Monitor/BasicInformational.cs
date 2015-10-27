@@ -7,7 +7,7 @@ namespace Netflix.Servo.Monitor
     /**
   * A simple informational implementation that maintains a string value.
   */
-    public class BasicInformational : AbstractMonitor<String>, Informational
+    public class BasicInformational : AbstractMonitor<String>, IInformational
     {
         private readonly AtomicReference<String> info = new AtomicReference<string>();
 
@@ -28,7 +28,7 @@ namespace Netflix.Servo.Monitor
             info.GetAndSet(value);
         }
 
-        public override String getValue(int pollerIndex)
+        public override String GetValue(int pollerIndex)
         {
             return info.Value;
         }

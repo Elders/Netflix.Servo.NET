@@ -26,7 +26,7 @@ namespace Netflix.Servo
          * @param timestamp point in time when the metric value was sampled
          * @param value     value of the metric
          */
-        public Metric(string name, TagList tags, long timestamp, Object value)
+        public Metric(string name, ITagList tags, long timestamp, Object value)
             : this(new MonitorConfig.Builder(name).withTags(tags).build(), timestamp, value)
         {
 

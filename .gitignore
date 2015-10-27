@@ -2,9 +2,13 @@
 ## CURRENT PROJECT ##
 #####################
 
-release.cmd
 *.orig
 
+################
+## Elders.Nyx ##
+################
+release.cmd
+*/**/AssemblyInfo.cs
 
 ##############################################################
 ## Ignore Visual Studio temporary files, build results, and ##
@@ -140,6 +144,9 @@ DocProject/Help/*.hhk
 DocProject/Help/*.hhp
 DocProject/Help/Html2
 DocProject/Help/html
+
+# Click-Once directory
+publish/
 
 # Publish Web Output
 *.[Pp]ublish.xml

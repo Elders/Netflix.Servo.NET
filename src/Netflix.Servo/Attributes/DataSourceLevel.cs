@@ -42,28 +42,13 @@ namespace Netflix.Servo.Attributes
         public static String KEY = "level";
         public string name = "default";
 
-        /**
-         * {@inheritDoc}
-         */
-        public String getKey()
-        {
-            return KEY;
-        }
+        public string Key { get { return KEY; } }
 
-        /**
-         * {@inheritDoc}
-         */
-        public String getValue()
-        {
-            return name;
-        }
+        public string Value { get { return name; } }
 
-        /**
-         * {@inheritDoc}
-         */
         public String tagString()
         {
-            return getKey() + "=" + getValue();
+            return Key + "=" + Value;
         }
     }
 }

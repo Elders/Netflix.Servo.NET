@@ -9,7 +9,7 @@ namespace Netflix.Servo.Monitor
  * Gauge that keeps track of the maximum value seen since the last reset. Updates should be
  * non-negative, the reset value is 0.
  */
-    public class MaxGauge : AbstractMonitor<long>, Gauge<long>
+    public class MaxGauge : AbstractMonitor<long>, IGauge<long>
     {
         private StepLong max;
 
@@ -59,9 +59,9 @@ namespace Netflix.Servo.Monitor
             }
         }
 
-        public override long getValue(int nth)
+        public override long GetValue(int pollerIndex)
         {
-            return max.poll(nth).getValue();
+            return max.poll(pollerIndex).getValue();
         }
 
         /**
@@ -84,13 +84,13 @@ namespace Netflix.Servo.Monitor
                 return false;
             }
             MaxGauge m = (MaxGauge)obj;
-            return config.Equals(m.getConfig()) && getValue(0).Equals(m.getValue(0));
+            return config.Equals(m.getConfig()) && GetValue(0).Equals(m.GetValue(0));
         }
 
         public override int GetHashCode()
         {
             int result = getConfig().GetHashCode();
-            result = 31 * result + getValue(0).GetHashCode();
+            result = 31 * result + GetValue(0).GetHashCode();
             return result;
         }
 

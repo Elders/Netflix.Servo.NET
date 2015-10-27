@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using Java.Util.Concurrent;
 using Netflix.Servo.Attributes;
@@ -29,14 +30,11 @@ namespace Netflix.Servo.Atlas
         protected long stepMs; // in milliseconds
         private Counter numMetricsTotal = Monitors.newCounter("numMetricsTotal");
         private Timer updateTimer = Monitors.newTimer("update");
-        private Counter numMetricsDroppedSendTimeout = newErrCounter("numMetricsDropped",
-            "sendTimeout");
-        private Counter numMetricsDroppedQueueFull = newErrCounter("numMetricsDropped",
-            "sendQueueFull");
-        private Counter numMetricsDroppedHttpErr = newErrCounter("numMetricsDropped",
-            "httpError");
+        private Counter numMetricsDroppedSendTimeout = newErrCounter("numMetricsDropped", "sendTimeout");
+        private Counter numMetricsDroppedQueueFull = newErrCounter("numMetricsDropped", "sendQueueFull");
+        private Counter numMetricsDroppedHttpErr = newErrCounter("numMetricsDropped", "httpError");
         private Counter numMetricsSent = Monitors.newCounter("numMetricsSent");
-        private TagList commonTags;
+        private ITagList commonTags;
         public static LinkedBlockingQueue<UpdateTasks> pushQueue = new LinkedBlockingQueue<UpdateTasks>();
         //@SuppressWarnings("unused")
         private Gauge<int> pushQueueSize = new BasicGauge<int>(
@@ -47,7 +45,7 @@ namespace Netflix.Servo.Atlas
          * config and list of common tags.
          * This method will use the default poller index of 0.
          */
-        public AtlasMetricObserver(ServoAtlasConfig config, TagList commonTags)
+        public AtlasMetricObserver(ServoAtlasConfig config, ITagList commonTags)
               : this(config, commonTags, 0)
         {
         }
@@ -56,7 +54,7 @@ namespace Netflix.Servo.Atlas
          * Create an observer that can send metrics to atlas with a given config, list of common tags,
          * and poller index.
          */
-        public AtlasMetricObserver(ServoAtlasConfig config, TagList commonTags, int pollerIdx)
+        public AtlasMetricObserver(ServoAtlasConfig config, ITagList commonTags, int pollerIdx)
             : this(config, commonTags, pollerIdx, new HttpHelper(new RxHttp(new BasicServerRegistry())))
         {
 
@@ -66,7 +64,7 @@ namespace Netflix.Servo.Atlas
          * Create an atlas observer. For internal use of servo only.
          */
         public AtlasMetricObserver(ServoAtlasConfig config,
-                                   TagList commonTags,
+                                   ITagList commonTags,
                                    int pollerIdx,
                                    HttpHelper httpHelper)
         {
@@ -100,21 +98,21 @@ namespace Netflix.Servo.Atlas
 
         protected static bool isCounter(Metric m)
         {
-            TagList tags = m.getConfig().getTags();
+            ITagList tags = m.getConfig().getTags();
             String value = tags.getValue(DataSourceType.KEY);
             return value != null && value.Equals(DataSourceType.COUNTER.name);
         }
 
         protected static bool isGauge(Metric m)
         {
-            TagList tags = m.getConfig().getTags();
+            ITagList tags = m.getConfig().getTags();
             String value = tags.getValue(DataSourceType.KEY);
             return value != null && value.Equals(DataSourceType.GAUGE.name);
         }
 
         protected static bool isRate(Metric m)
         {
-            TagList tags = m.getConfig().getTags();
+            ITagList tags = m.getConfig().getTags();
             String value = tags.getValue(DataSourceType.KEY);
             return DataSourceType.RATE.name.Equals(value)
                 || DataSourceType.NORMALIZED.name.Equals(value);
@@ -241,7 +239,7 @@ namespace Netflix.Servo.Atlas
             sendNow(getUpdateTasks(commonTags, transformed));
         }
 
-        private UpdateTasks getUpdateTasks(TagList tags, List<Metric> metrics)
+        private UpdateTasks getUpdateTasks(ITagList tags, List<Metric> metrics)
         {
             if (!config.shouldSendMetrics())
             {
@@ -287,7 +285,7 @@ namespace Netflix.Servo.Atlas
             return 1;
         }
 
-        protected ObservableCollection<int> getSenderObservable(TagList tags, Metric[] batch)
+        protected ObservableCollection<int> getSenderObservable(ITagList tags, Metric[] batch)
         {
             JsonPayload payload = new UpdateRequest(tags, batch, batch.Length);
             return httpHelper.postSmile(config.getAtlasUri(), payload)
@@ -334,8 +332,7 @@ namespace Netflix.Servo.Atlas
 
             public override String ToString()
             {
-                return "UpdateTasks{numMetrics=" + numMetrics + ", tasks="
-                    + tasks + ", timestamp=" + timestamp + '}';
+                return "UpdateTasks{numMetrics=" + numMetrics + ", tasks=" + tasks + ", timestamp=" + timestamp + '}';
             }
         }
 

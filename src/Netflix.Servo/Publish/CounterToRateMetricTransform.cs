@@ -223,7 +223,7 @@ namespace Netflix.Servo.Publish
 
         private bool isCounter(Metric m)
         {
-            TagList tags = m.getConfig().getTags();
+            ITagList tags = m.getConfig().getTags();
             String value = tags.getValue(DataSourceType.KEY);
             return COUNTER_VALUE.Equals(value);
         }

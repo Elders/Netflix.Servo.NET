@@ -4,7 +4,7 @@
     /// Monitor type that provides the current value, e.g., the percentage of disk space used.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface Gauge<T> : NumericMonitor<T>
+    public interface IGauge<out T> : INumericMonitor<T>
     {
     }
 }

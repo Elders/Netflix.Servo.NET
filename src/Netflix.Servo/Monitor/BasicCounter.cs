@@ -9,7 +9,7 @@ namespace Netflix.Servo.Monitor
  * The value is the total count for the life of the counter. Observers are responsible
  * for converting to a rate and handling overflows if they occur.
  */
-    public class BasicCounter : AbstractMonitor<object>, Counter
+    public class BasicCounter : AbstractMonitor<object>, ICounter<object>
     {
         private readonly AtomicLong count = new AtomicLong();
 
@@ -32,7 +32,7 @@ namespace Netflix.Servo.Monitor
             count.GetAndSet(amount);
         }
 
-        public override object getValue(int pollerIndex)
+        public override object GetValue(int pollerIndex)
         {
             return count.Value;
         }

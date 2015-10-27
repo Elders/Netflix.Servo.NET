@@ -2,14 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using slf4net;
 
 namespace Netflix.Servo.Tag
 {
+
     /// <summary>
     /// This class is not intended to be used by 3rd parties and should be considered an implementation detail.
     /// </summary>
@@ -25,7 +21,7 @@ namespace Netflix.Servo.Tag
         /// </summary>
         public const int INITIAL_TAG_SIZE = 8;
 
-        private static ILogger LOGGER = LoggerFactory.GetLogger(typeof(SmallTagMap));
+        //private static ILogger LOGGER = LoggerFactory.GetLogger(typeof(SmallTagMap));
 
         /// <summary>
         /// Return a new builder to assist in creating a new SmallTagMap using the default tag size (8).
@@ -97,7 +93,7 @@ namespace Netflix.Servo.Tag
                 else
                 {
                     string msg = $"Cannot add Tag {tag} - Maximum number of tags ({MAX_TAGS}) reached.";
-                    LOGGER.Error(msg);
+                    //LOGGER.Error(msg);
                 }
             }
 
@@ -106,7 +102,7 @@ namespace Netflix.Servo.Tag
              */
             public Builder add(ITag tag)
             {
-                string k = tag.getKey();
+                string k = tag.Key;
                 int pos = (int)(Math.Abs((long)k.GetHashCode()) % size);
                 int i = pos;
                 Object ki = buf[i * 2];
@@ -169,12 +165,12 @@ namespace Netflix.Servo.Tag
                 }
                 Array.Sort(tagArray, (o1, o2) =>
                 {
-                    int keyCmp = string.Compare(o1.getKey(), o2.getKey(), StringComparison.Ordinal);
+                    int keyCmp = string.Compare(o1.Key, o2.Key, StringComparison.Ordinal);
                     if (keyCmp != 0)
                     {
                         return keyCmp;
                     }
-                    return string.Compare(o1.getValue(), o2.getValue(), StringComparison.Ordinal);
+                    return string.Compare(o1.Value, o2.Value, StringComparison.Ordinal);
                 });
                 Debug.Assert(tagIdx == actualSize);
                 return new SmallTagMap(tagArray);
@@ -210,7 +206,7 @@ namespace Netflix.Servo.Tag
             {
                 int mid = (int)(((uint)(low + high)) >> 1);
                 ITag midValTag = a[mid];
-                string midVal = midValTag.getKey();
+                string midVal = midValTag.Key;
                 int cmp = string.Compare(midVal, key, StringComparison.Ordinal);
                 if (cmp < 0)
                 {

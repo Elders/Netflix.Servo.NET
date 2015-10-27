@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Java.Util.Concurrent.Atomic;
 using Netflix.Servo.Tag;
-using Netflix.Servo.Util;
 
 namespace Netflix.Servo.Monitor
 {
+
     /**
  * Configuration settings associated with a monitor. A config consists of a name that is required
  * and an optional set of tags.
@@ -21,7 +21,7 @@ namespace Netflix.Servo.Monitor
         {
             public string name;
             public SmallTagMap.Builder tagsBuilder = SmallTagMap.builder();
-            public PublishingPolicy policy = DefaultPublishingPolicy.getInstance();
+            public IPublishingPolicy policy = DefaultPublishingPolicy.getInstance();
 
             /**
              * Create a new builder initialized with the specified config.
@@ -61,7 +61,7 @@ namespace Netflix.Servo.Monitor
             /**
              * Add all tags in the list to the config.
              */
-            public Builder withTags(TagList tagList)
+            public Builder withTags(ITagList tagList)
             {
                 if (tagList != null)
                 {
@@ -94,7 +94,7 @@ namespace Netflix.Servo.Monitor
             /**
              * Add the publishing policy to the config.
              */
-            public Builder withPublishingPolicy(PublishingPolicy policy)
+            public Builder withPublishingPolicy(IPublishingPolicy policy)
             {
                 this.policy = policy;
                 return this;
@@ -127,7 +127,7 @@ namespace Netflix.Servo.Monitor
             /**
              * Get the publishingPolicy.
              */
-            public PublishingPolicy getPublishingPolicy()
+            public IPublishingPolicy getPublishingPolicy()
             {
                 return policy;
             }
@@ -141,9 +141,9 @@ namespace Netflix.Servo.Monitor
             return new Builder(name);
         }
 
-        private String name;
-        private TagList tags;
-        private PublishingPolicy policy;
+        private string name;
+        private ITagList tags;
+        private IPublishingPolicy policy;
 
         /**
          * Config is immutable, cache the hash code to improve performance.
@@ -156,7 +156,7 @@ namespace Netflix.Servo.Monitor
          */
         private MonitorConfig(Builder builder)
         {
-            this.name = Preconditions.checkNotNull(builder.name, "name");
+            this.name = builder.name;
             this.tags = (builder.tagsBuilder.isEmpty())
                 ? BasicTagList.EMPTY
                 : new BasicTagList(builder.tagsBuilder.result());
@@ -174,7 +174,7 @@ namespace Netflix.Servo.Monitor
         /**
          * Returns the tags associated with the metric.
          */
-        public TagList getTags()
+        public ITagList getTags()
         {
             return tags;
         }
@@ -182,7 +182,7 @@ namespace Netflix.Servo.Monitor
         /**
          * Returns the publishing policy.
          */
-        public PublishingPolicy getPublishingPolicy()
+        public IPublishingPolicy getPublishingPolicy()
         {
             return policy;
         }
@@ -242,7 +242,7 @@ namespace Netflix.Servo.Monitor
         /**
          * Returns a copy of the monitor config with additional tags.
          */
-        public MonitorConfig withAdditionalTags(TagList newTags)
+        public MonitorConfig withAdditionalTags(ITagList newTags)
         {
             return copy().withTags(newTags).build();
         }

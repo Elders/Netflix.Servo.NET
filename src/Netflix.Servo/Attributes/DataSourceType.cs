@@ -62,7 +62,7 @@ namespace Netflix.Servo.Attributes
          */
         //public static String KEY = System.getProperty("servo.datasourcetype.key", "type");
         //TODO: Fix this
-        public static String KEY = "";
+        public static String KEY = "type";
         public string name = "default";
 
         public string Key { get { return KEY; } }

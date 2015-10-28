@@ -7,8 +7,9 @@
     <authors>@authors@</authors>
     <language>en-US</language>
     <summary>@summary@</summary>
-    <licenseUrl>https://raw.githubusercontent.com/Elders/Nyx/master/LICENSE</licenseUrl>
+    <licenseUrl>https://raw.githubusercontent.com/Elders/Servo.NET/master/LICENSE</licenseUrl>
     <releaseNotes>@releaseNotes@</releaseNotes>
-    <tags>.net build script complie</tags>
+    <tags>servo metrics tag monitor</tags>
+    @dependencies@
   </metadata>
 </package>

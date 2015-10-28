@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Java.Util.Concurrent", "Jav
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Servo.Atlas", "Netflix.Servo.Atlas\Netflix.Servo.Atlas.csproj", "{7296D06B-608E-42C8-B9FD-25DA2BC60611}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{AB7EDC45-B4C1-4927-93DA-9223D2E26CB7}"
+	ProjectSection(SolutionItems) = preProject
+		Netflix.Servo\RELEASE_NOTES.md = Netflix.Servo\RELEASE_NOTES.md
+		Netflix.Servo\Servo.nuspec = Netflix.Servo\Servo.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

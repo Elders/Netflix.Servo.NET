@@ -1,3 +1,6 @@
+#### 0.1.0-beta0003 - 28.10.2015
+* Set default value for DataSourceType.Key="type"
+
 #### 0.1.0-beta0002 - 27.10.2015
 * Remove duplicated classes
 

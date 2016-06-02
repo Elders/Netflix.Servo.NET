@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
-using slf4net;
+using Netflix.Servo.Logging;
 
 namespace Netflix.Servo.Monitor
 {
@@ -74,7 +74,7 @@ namespace Netflix.Servo.Monitor
             long[] result = new long[periods.Length];
 
             bool errors = false;
-            ILogger logger = LoggerFactory.GetLogger(typeof(Pollers));
+            ILog logger = LogProvider.GetLogger(typeof(Pollers));
             for (int i = 0; i < periods.Length; ++i)
             {
                 String period = periods[i];
@@ -83,20 +83,20 @@ namespace Netflix.Servo.Monitor
                     result[i] = long.Parse(period);
                     if (result[i] <= 0)
                     {
-                        logger.Error("Invalid polling interval: {0} must be positive.", period);
+                        logger.ErrorFormat("Invalid polling interval: {0} must be positive.", period);
                         errors = true;
                     }
                 }
                 catch (FormatException e)
                 {
-                    logger.Error("Cannot parse '{0}' as a long: {1}", period, e.Message);
+                    logger.ErrorFormat("Cannot parse '{0}' as a long: {1}", period, e.Message);
                     errors = true;
                 }
             }
 
             if (errors || periods.Length == 0)
             {
-                logger.Info("Using a default configuration for poller intervals: {0}", join(DEFAULT_PERIODS));
+                logger.InfoFormat("Using a default configuration for poller intervals: {0}", join(DEFAULT_PERIODS));
                 return DEFAULT_PERIODS;
             }
             else

@@ -1,3 +1,6 @@
+#### 0.1.0-beta0004 - 02.06.2016
+* Uses LibLog instead of slf4net
+
 #### 0.1.0-beta0003 - 28.10.2015
 * Set default value for DataSourceType.Key="type"
 

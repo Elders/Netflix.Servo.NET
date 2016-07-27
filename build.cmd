@@ -49,6 +49,6 @@ SET RELEASE_NOTES=RELEASE_NOTES.md
 SET SUMMARY="Elders.Servo.NET"
 SET DESCRIPTION="Elders.Servo.NET"
 
-%FAKE% %NYX% appName=Netflix.Servo appReleaseNotes=%RELEASE_NOTES% appSummary=%SUMMARY% appDescription=%DESCRIPTION% nugetkey=%RELEASE_NUGETKEY% nugetPackageName=Servo.NET
+%FAKE% %NYX% appName=Elders.Servo.NET appReleaseNotes=%RELEASE_NOTES% appSummary=%SUMMARY% appDescription=%DESCRIPTION% nugetkey=%RELEASE_NUGETKEY% nugetPackageName=Servo.NET
 
 IF NOT [%1]==[] (%FAKE% %NYX% "target=Release" -st appReleaseNotes=%RELEASE_NOTES%)
